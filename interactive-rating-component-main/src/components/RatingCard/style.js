@@ -1,82 +1,103 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: var(--darkBlue);
-  padding: 32px 28px 20px 28px;
-  height: 100%;
-  width: 100%;
-  border-radius: 28px;
-  max-width: 420px;
+  background-color: var(--dark-blue);
+  padding: 24px 24px 30px;
+  border-radius: 12px;
+`;
 
-  .circle {
-    border-radius: 50%;
-    width: 3em;
-    height: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #2e3843ed;
-  }
+export const Input = styled.input`
+  appearance: none;
+`;
 
-  h2 {
-    color: var(--white);
+export const Circle = styled.div`
+  align-items: center;
+  background-color: hsl(211deg 19% 22% / 93%);
+  border-radius: 50%;
+  color: var(--light-grey);
+  display: flex;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+
+  label& {
+    color: var(--light-grey);
     font-weight: 700;
-    margin: 24px 0 10px 0;
-  }
 
-  p {
-    color: var(--lightGrey);
-    font-weight: 400;
-    margin-bottom: 8px;
-    line-height: 22px;
-  }
-
-  fieldset {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    border: none;
-    margin-top: 24px;
-    margin-bottom: 24px;
-
-    label {
-      color: var(--lightGrey);
-      font-weight: 700;
-
-      &:hover {
-        background-color: var(--lightGrey);
-        color: var(--white);
-        cursor: pointer;
-      }
+    &:hover {
+      background-color: var(--light-grey);
+      color: var(--white);
+      cursor: pointer;
     }
 
-    label.active {
+    ${Input}:checked + & {
       background-color: var(--orange);
       color: var(--white);
     }
-
-    input {
-      appearance: none;
-    }
   }
 
-  button {
-    background-color: hsl(25, 97%, 53%);
-    border-radius: 32px;
-    color: hsl(0, 0%, 100%);
-    border: 0;
-    padding: 10px 0;
-    cursor: pointer;
-    width: 100%;
-    letter-spacing: 1.5px;
+  @media screen and (min-width: 768px) {
+    height: 3.125rem;
+    width: 3.125rem;
+  }
+`;
 
-    &:hover {
-      background-color: var(--white);
-      color: var(--orange);
-    }
+export const Hgroup = styled.hgroup`
+  margin-top: 22px;
+  margin-bottom: 22px;
+`;
+
+export const Heading = styled.h1`
+  color: var(--white);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: -0.05em;
+
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+  }
+`;
+
+export const Lead = styled.p`
+  color: var(--light-grey);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+
+  ${Heading} + & {
+    margin-top: 21px;
+  }
+`;
+
+export const Fieldset = styled.fieldset`
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  border: none;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+`;
+
+export const Button = styled.button`
+  background-color: hsl(25, 97%, 53%);
+  border-radius: 22px;
+  color: hsl(0, 0%, 100%);
+  border: 0;
+  font-size: 14px;
+  padding: 15px;
+  line-height: 15px;
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  &:not(:disabled):hover {
+    background-color: var(--white);
+    color: var(--orange);
   }
 
-  button.disabled {
+  &:disabled {
     opacity: 0.6;
     cursor: default;
   }

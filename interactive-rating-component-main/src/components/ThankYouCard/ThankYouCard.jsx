@@ -1,10 +1,10 @@
 import React from "react";
-import { Container } from "./style";
+import { Container, Heading, Lead, ReceiptImage, UserRating } from "./style";
 
-const ThankYouCard = (props) => {
+export function ThankYouCard(props) {
   return (
     <Container>
-      <div className="receipt-image">
+      <ReceiptImage>
         <svg width="162" height="108" xmlns="http://www.w3.org/2000/svg">
           <g fill="none">
             <path
@@ -94,17 +94,13 @@ const ThankYouCard = (props) => {
             />
           </g>
         </svg>
-      </div>
-      <div className="user-rating">
-        You selected {props.selectedRating} out of 5
-      </div>
-      <h2>Thank you!</h2>
-      <p>
+      </ReceiptImage>
+      <UserRating>You selected {props.selectedRating} out of 5</UserRating>
+      <Heading>Thank you!</Heading>
+      <Lead>
         We appreciate you taking the time to give a rating. If you ever need
         more support, don't hesitate to get in touch!
-      </p>
+      </Lead>
     </Container>
   );
-};
-
-export default ThankYouCard;
+}
