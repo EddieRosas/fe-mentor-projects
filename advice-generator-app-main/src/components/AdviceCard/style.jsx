@@ -28,9 +28,9 @@ export const Spinner = styled.div`
     }
     100% {
       transform: rotate(360deg);
+    }
   }
-}
-`
+`;
 
 export const Heading = styled.h4`
   color: var(--neon-green);
@@ -42,7 +42,7 @@ export const Heading = styled.h4`
   @media screen and (min-width: 768px) {
     font-size: 13px;
   }
-  `
+`;
 
 export const Advice = styled.main`
   color: var(--light-cyan);
@@ -54,14 +54,14 @@ export const Advice = styled.main`
   @media screen and (min-width: 768px) {
     font-size: 28px;
     /* font-weight: 600; */
-    letter-spacing: .01em;
+    letter-spacing: 0.01em;
   }
-`
+`;
 export const Divider = styled.div`
   margin-bottom: 30px;
-`
+`;
 
-export const Button = styled.div`
+export const Button = styled.button`
   border-radius: 50%;
   height: 4.125rem;
   width: 4.125rem;
@@ -76,10 +76,18 @@ export const Button = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: .2s ease;
-  
-  &:hover {
-    box-shadow: 0rem 0rem 1rem #52ffa8;
-    transition: .2s ease;
+  transition: 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
   }
-`
+
+  @media (hover: hover) {
+    &:not(:disabled):hover {
+      box-shadow: 0rem 0rem 1rem #52ffa8;
+      transition: 0.2s ease;
+    }
+  }
+`;
