@@ -1,26 +1,26 @@
 import { useState, useEffect, useRef } from "react";
 import { Container, Spinner, Heading, Advice, Divider, Button } from "./style";
 
+// TODO:
+// initial render fetches data twice
+// handling loading state is trash
+// how to handle needing to wait/click twice
+//   before making another successful api call
+
 export function AdviceCard() {
-  const [advice, setAdvice] = useState(undefined);
-  const [loading, setLoading] = useState(true);
+  const [advice, setAdvice] = useState({});
+  const [loading, setLoading] = useState(false);
 
   async function getData() {
     try {
       const response = await fetch("https://api.adviceslip.com/advice");
       const data = await response.json();
-      setAdvice(data.slip);
       setLoading(false);
+      setAdvice(data.slip);
     } catch (error) {
       console.log("ya messed up");
     }
   };
-
-  // TODO:
-  // initial render fetches data twice
-  // handling loading state is trash
-  // how to handle needing to wait/click twice
-  //   making another successful api call
 
   useEffect(() => {
     getData();
@@ -28,14 +28,12 @@ export function AdviceCard() {
 
   function handleClick() {
     setLoading(true);
-    setAdvice(undefined);
     getData();
   }
 
   return (
     <Container>
-      {loading && <Spinner />}
-      {advice &&
+      {loading ? (<Spinner />) :
         <>
           <Heading>Advice #{advice.id}</Heading>
           <Advice>{advice.advice}</Advice>
