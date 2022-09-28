@@ -7,30 +7,7 @@ import { Container, Spinner, Heading, Advice, Divider, Button } from "./style";
 // how to handle needing to wait/click twice
 //   before making another successful api call
 
-export function AdviceCard() {
-  const [advice, setAdvice] = useState({});
-  const [loading, setLoading] = useState(false);
-
-  async function getData() {
-    try {
-      const response = await fetch("https://api.adviceslip.com/advice");
-      const data = await response.json();
-      setLoading(false);
-      setAdvice(data.slip);
-    } catch (error) {
-      console.log("ya messed up");
-    }
-  }
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  function handleClick() {
-    setLoading(true);
-    getData();
-  }
-
+export function AdviceCard({ getAdvice, advice, loading }) {
   return (
     <Container>
       {loading ? (
@@ -52,7 +29,7 @@ export function AdviceCard() {
           </g>
         </svg>
       </Divider>
-      <Button disabled={loading ? true : false} onClick={handleClick}>
+      <Button disabled={loading} onClick={getAdvice}>
         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M20 0H4a4.005 4.005 0 0 0-4 4v16a4.005 4.005 0 0 0 4 4h16a4.005 4.005 0 0 0 4-4V4a4.005 4.005 0 0 0-4-4ZM7.5 18a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"

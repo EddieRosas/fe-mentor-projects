@@ -53,7 +53,6 @@ export const Advice = styled.main`
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
-    /* font-weight: 600; */
     letter-spacing: 0.01em;
   }
 `;
