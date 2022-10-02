@@ -55,6 +55,7 @@ function App() {
                 name="percentage"
                 id="5-percent"
                 value={5}
+                checked={percent === .05}
               />
               <label htmlFor="5-percent">5%</label>
             </div>
@@ -66,6 +67,7 @@ function App() {
                 name="percentage"
                 id="10-percent"
                 value={10}
+                checked={percent === .10}
               />
               <label htmlFor="10-percent">10%</label>
             </div>
@@ -77,6 +79,7 @@ function App() {
                 name="percentage"
                 id="15-percent"
                 value={15}
+                checked={percent === .15}
               />
               <label htmlFor="15-percent">15%</label>
             </div>
@@ -88,6 +91,7 @@ function App() {
                 name="percentage"
                 id="25-percent"
                 value={25}
+                checked={percent === .25}
               />
               <label htmlFor="25-percent">25%</label>
             </div>
@@ -99,6 +103,7 @@ function App() {
                 name="percentage"
                 id="50-percent"
                 value={50}
+                checked={percent === .50}
               />
               <label htmlFor="50-percent">50%</label>
             </div>
@@ -121,7 +126,7 @@ function App() {
                     name="percentage"
                     id="other-radio"
                   />
-                  <label htmlFor="custom">Custom</label>
+                  <label htmlFor="other-radio">Custom</label>
                 </>
               )}
             </div>
@@ -129,6 +134,7 @@ function App() {
 
             <input
               type="number"
+              min='1'
               id="people-count"
               name="people-count"
               onChange={(e) => setNumberOfPeople(e.currentTarget.value)}
