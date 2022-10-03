@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import { GlobalStyle } from "./styles/global";
+import { Card, Form, Results } from "./components";
 
 // validations needed
-// run calculation when all fields are filled and when
-// all fields are filled and any other value changes
 
 function App() {
   const [custom, setCustom] = useState(false);
@@ -35,122 +34,19 @@ function App() {
   }, [billTotal, percent, custom, numberOfPeople]);
 
   return (
-    <div className="App">
-      <div className="card">
-        <form id="calculator">
-          <fieldset>
-            <div>
-              <label htmlFor="bill">Bill </label>
-              <input
-                type="text"
-                id="bill"
-                onChange={(e) => setBillTotal(e.currentTarget.value)}
-              />
-            </div>
-            <p>Select Tip %</p>
-            <div>
-              <input
-                onChange={handleChange}
-                type="radio"
-                name="percentage"
-                id="5-percent"
-                value={5}
-                checked={percent === .05}
-              />
-              <label htmlFor="5-percent">5%</label>
-            </div>
-
-            <div>
-              <input
-                onChange={handleChange}
-                type="radio"
-                name="percentage"
-                id="10-percent"
-                value={10}
-                checked={percent === .10}
-              />
-              <label htmlFor="10-percent">10%</label>
-            </div>
-
-            <div>
-              <input
-                onChange={handleChange}
-                type="radio"
-                name="percentage"
-                id="15-percent"
-                value={15}
-                checked={percent === .15}
-              />
-              <label htmlFor="15-percent">15%</label>
-            </div>
-
-            <div>
-              <input
-                onChange={handleChange}
-                type="radio"
-                name="percentage"
-                id="25-percent"
-                value={25}
-                checked={percent === .25}
-              />
-              <label htmlFor="25-percent">25%</label>
-            </div>
-
-            <div>
-              <input
-                onChange={handleChange}
-                type="radio"
-                name="percentage"
-                id="50-percent"
-                value={50}
-                checked={percent === .50}
-              />
-              <label htmlFor="50-percent">50%</label>
-            </div>
-
-            <div>
-              {custom ? (
-                <>
-                  <input
-                    type="text"
-                    placeholder="Enter Percentage"
-                    onChange={handleChange}
-                    id="other-text"
-                  />
-                </>
-              ) : (
-                <>
-                  <input
-                    onChange={handleChange}
-                    type="radio"
-                    name="percentage"
-                    id="other-radio"
-                  />
-                  <label htmlFor="other-radio">Custom</label>
-                </>
-              )}
-            </div>
-            <br />
-
-            <input
-              type="number"
-              min='1'
-              id="people-count"
-              name="people-count"
-              onChange={(e) => setNumberOfPeople(e.currentTarget.value)}
-            />
-            <label htmlFor="people-count">Number of people</label>
-
-            <br />
-          </fieldset>
-        </form>
-
-        <h2>Tip: ${tip > 0 ? tip : "0.00"}</h2>
-        <h2>
-          Total Per Person: ${totalPerPerson > 0 ? totalPerPerson : "0.00"}
-        </h2>
-      </div>
-    </div>
+    <>
+      <GlobalStyle />
+      <Card>
+        <Form
+          onChange={handleChange}
+          setBillTotal={setBillTotal}
+          custom={custom}
+          setNumberOfPeople={setNumberOfPeople}
+          percent={percent}
+        />
+        <Results tip={tip} totalPerPerson={totalPerPerson} />
+      </Card>
+    </>
   );
 }
 
